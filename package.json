@@ -1,0 +1,22 @@
+{
+  "name": "@justalk/anime-api",
+  "version": "1.0.0",
+  "description": "An api for searching a download link for an anime through many different website",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JustalK/ANIME-API.git"
+  },
+  "keywords": [
+    "anime"
+  ],
+  "author": "Justal Kevin",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/JustalK/ANIME-API/issues"
+  },
+  "homepage": "https://github.com/JustalK/ANIME-API#readme"
+}
