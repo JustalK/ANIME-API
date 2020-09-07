@@ -4,9 +4,9 @@
   "description": "An api for searching a download link for an anime through many different website",
   "main": "index.js",
   "scripts": {
-      "test": "xo && nyc --reporter=html --reporter=text ava",
-      "test-no": "ava",
-      "coverage": "nyc report --reporter=text-lcov | coveralls"
+    "test": "xo && nyc --reporter=html --reporter=text ava",
+    "test-no": "ava",
+    "coverage": "nyc report --reporter=text-lcov | coveralls"
   },
   "repository": {
     "type": "git",
@@ -26,5 +26,8 @@
     "coveralls": "^3.1.0",
     "nyc": "^15.1.0",
     "xo": "^0.33.1"
+  },
+  "dependencies": {
+    "jsdom": "^16.4.0"
   }
 }
