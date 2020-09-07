@@ -8,9 +8,12 @@ module.exports = {
 		module.exports.scrap_link(doc);
 	},
 	scrap_link: (doc) => {
-		const elements = [...doc.querySelectorAll('.video_thumb_content .imagelist .picture a')];
-		elements.map((element, index) => {
-			console.log(element.getAttribute('href'));
-		})
+		const elements = [...doc.querySelectorAll('.video_thumb_content .imagelist .title a')];
+		const object_scrapped = elements.map((element, index) => {
+			title = element.innerHTML ? element.innerHTML : 'No Data';
+			link = element.getAttribute('href') ? element.getAttribute('href') : 'No Data';
+			return {title: title, link: link}
+		});
+		return object_scrapped;
 	}
 };
