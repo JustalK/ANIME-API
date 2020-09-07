@@ -1,4 +1,5 @@
 const utils = require('../utils');
+const constants_global = require('../constants_global');
 const constants = require('./constants');
 
 module.exports = {
@@ -11,8 +12,8 @@ module.exports = {
 		const elements = [...doc.querySelectorAll('.video_thumb_content .imagelist .title a')];
 		const objects_scrapped = elements.map((element, index) => {
 			const object_scrapped = {};
-			object_scrapped.title = element.innerHTML ? element.innerHTML : 'No Data';
-			object_scrapped.link = element.getAttribute('href') ? element.getAttribute('href') : 'No Data';
+			object_scrapped.title = element.innerHTML ? element.innerHTML : constants_global.NO_DATA;
+			object_scrapped.link = element.getAttribute('href') ? element.getAttribute('href') : constants_global.NO_DATA;
 			return object_scrapped;
 		});
 		return objects_scrapped;
