@@ -3,9 +3,9 @@ const chiaanime = require('./chia-anime/search');
 
 module.exports = {
 	links: async search => {
-		const rsl = {};
-		rsl.animeland = await animeland.search(search);
-		rsl.chiaanime = await chiaanime.search(search);
+		let rsl = [];
+		rsl = [...rsl, ...await animeland.search(search)];
+		rsl = [...rsl, ...await chiaanime.search(search)];
 		console.log(rsl);
 		return rsl;
 	}
