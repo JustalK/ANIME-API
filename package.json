@@ -28,6 +28,7 @@
     "xo": "^0.33.1"
   },
   "dependencies": {
+    "js-levenshtein": "^1.1.6",
     "jsdom": "^16.4.0"
   }
 }
