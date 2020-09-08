@@ -26,5 +26,16 @@ module.exports = {
 		search_encoded = encodeURI(search_encoded);
 		const source = await module.exports.url_to_source(anime_search_link + search_encoded);
 		return module.exports.source_to_dom(source);
+	},
+	compare_by_levenshtein: (a, b) => {
+		if (a.levenshtein > b.levenshtein) {
+			return 1;
+		}
+
+		if (b.levenshtein > a.levenshtein) {
+			return -1;
+		}
+
+		return 0;
 	}
 };

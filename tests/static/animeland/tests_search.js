@@ -5,8 +5,9 @@ const nock = require('nock');
 /**
 * Mock the call to the url for always having the same result even if pornhub website evolve (New comments...)
 **/
-const scope = nock('https://www.animeland.us/')
+const scope = nock('https://www.animeland.us')
 	.get('/?s=mock%20anime%20api')
+	.times(2)
 	.replyWithFile(200, './tests/static/animeland/animeland_search.html');
 
 test('[STATIC] Testing the search on the saved page of ANIMELAND', async t => {
@@ -32,4 +33,14 @@ test('[STATIC] Testing the search on the saved page of ANIMELAND', async t => {
 	t.is(links[6].title, 'No Data');
 	t.is(links[6].link, 'No Data');
 	t.is(links[6].levenshtein, 1337);
+});
+
+test('[STATIC] Testing the options limit_per_website', async t => {
+	const links = await m.links('mock anime api', {limit_per_website: 1});
+
+	t.assert(links.length === 1);
+	t.is(links[0].source, 'ANIMELAND');
+	t.is(links[0].title, 'Naruto');
+	t.is(links[0].link, 'https://www.animeland.us/dub/naruto');
+	t.is(links[0].levenshtein, 13);
 });

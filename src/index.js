@@ -1,27 +1,13 @@
 const animeland = require('./animeland/search');
 const chiaanime = require('./chia-anime/search');
-
-/**
-* Compare by string difference
-**/
-const compare_by_levenshtein = (a, b) => {
-	if (a.levenshtein > b.levenshtein) {
-		return 1;
-	}
-
-	if (b.levenshtein > a.levenshtein) {
-		return -1;
-	}
-
-	return 0;
-};
+const utils = require('./utils');
 
 module.exports = {
-	links: async search => {
+	links: async (search, options = {}) => {
 		let rsl = [];
-		rsl = [...rsl, ...await animeland.search(search)];
-		rsl = [...rsl, ...await chiaanime.search(search)];
-		rsl.sort(compare_by_levenshtein);
+		rsl = [...rsl, ...await animeland.search(search, options)];
+		rsl = [...rsl, ...await chiaanime.search(search, options)];
+		rsl.sort(utils.compare_by_levenshtein);
 		return rsl;
 	}
 };
