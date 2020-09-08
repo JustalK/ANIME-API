@@ -8,6 +8,7 @@ module.exports = {
 		if (options.website && !options.website.includes(constants_global.WEBSITE.ANIMELAND)) {
 			return [];
 		}
+
 		const doc = await utils.search(constants.URL_SEARCH, search);
 		const objects_scrapped = module.exports.scrap_link(doc, search);
 		const objects_scrapped_optionned = utils.apply_options(objects_scrapped, options);

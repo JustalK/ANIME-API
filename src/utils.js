@@ -6,12 +6,12 @@ const {JSDOM} = jsdom;
 module.exports = {
 	url_to_source: async url => {
 		const safe_url = url.toLowerCase();
-		const response = await got(safe_url);
-		if (response.statusCode !== 200) {
+		try {
+			const response = await got(safe_url);
+			return response.body;
+		} catch {
 			return errors.handle_error(errors.ERROR_WRONG_STATUS_CODE, {url: safe_url});
 		}
-
-		return response.body;
 	},
 	source_to_dom: source => {
 		const dom = new JSDOM(source);
@@ -28,12 +28,12 @@ module.exports = {
 		return module.exports.source_to_dom(source);
 	},
 	clean_title: (title, clean_option) => {
-		if(clean_option.TV) {
-			title = title.replace('(TV)','');
+		if (clean_option.TV) {
+			title = title.replace('(TV)', '');
 		}
 
-		if(clean_option.OVA) {
-			title = title.replace('(OVA)','');
+		if (clean_option.OVA) {
+			title = title.replace('(OVA)', '');
 		}
 
 		title = title.trim();

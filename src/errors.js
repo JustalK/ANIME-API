@@ -8,6 +8,6 @@ module.exports = {
 			error.details = details;
 		}
 
-		throw error;
+		throw new Error(message);
 	}
 };
