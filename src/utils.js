@@ -13,7 +13,9 @@ module.exports = {
 		return dom.window.document;
 	},
 	search: async (anime_search_link, search) => {
-		const source = await module.exports.url_to_source(anime_search_link + search);
+		let search_encoded = search.trim().toLowerCase();
+		search_encoded = encodeURI(search_encoded);
+		const source = await module.exports.url_to_source(anime_search_link + search_encoded);
 		return module.exports.source_to_dom(source);
 	}
 };
