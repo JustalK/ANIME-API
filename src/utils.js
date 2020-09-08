@@ -1,3 +1,4 @@
+const errors = require('./errors');
 const got = require('got');
 const jsdom = require('jsdom');
 const {JSDOM} = jsdom;
@@ -6,6 +7,7 @@ module.exports = {
 	url_to_source: async url => {
 		const safe_url = url.toLowerCase();
 		const response = await got(safe_url);
+		if(response.statusCode !== 200) return errors.handle_error(errors.ERROR_WRONG_STATUS_CODE, {url: safe_url});
 		return response.body;
 	},
 	source_to_dom: source => {
