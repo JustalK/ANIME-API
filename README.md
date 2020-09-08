@@ -11,20 +11,17 @@
 
 ![Star the project](https://img.shields.io/github/stars/justalk/anime-api?style=social)
 
-Api for searching animes on different website
+Api for searching page link, download link, streaming link of an anime and a precise episode on many website simultaneously.
 
 `npm install @justalk/anime-api`
 
 ## Features
 
-- **Get links:** Get the links of the website by searching an anime by name
+- **Get page links:** Get the page links of the anime on many website by searching an anime by name
 
-## Website available
+- **Get download links:** Get the direct download link of an episode of an anime by anime name (incomming)
 
-1. animeland
-2. chia-anime
-
-I am increasing the list progresively.
+- **Get streaming links:** Get the streaming link of an episode of an anime by anime name (incomming)
 
 ## API
 
@@ -37,15 +34,26 @@ async links(search, options)
 | name | type | description |
 | :--- | :---------- | :--- |
 | search | String | name of the anime searched |
-| options | Object | List of the options |
+| options | Object | (optionnal) List of the options |
 
-###### Lists of options available
+###### Lists of optionnal options available
 
 | name of key | return type | description |
 | :--- | :---------- | :--- |
 | limit_per_website | Number | Limit the number of result per website |
 | limit | Number | Limit the number of total result |
+| website | String | Website that you wanna target |
 
+
+## List of website available
+
+The list below show the website scraped by the API and the website available for the option `website`
+
+1. ANIMELAND
+2. CHIA-ANIME
+3. ANIME-XYZ
+
+The list is increasing slowly. I am working on it.
 
 ### Examples
 
@@ -54,24 +62,24 @@ const animeApi = require('@latsuj/anime-api');
 const results = await animeApi.links('Naruto shippuden');
 ```
 
-```json
+```js
 results = [{
-  source: 'ANIMELAND',
-  title: 'Naruto Shippuden',
-  link: 'https://www.animeland.us/dub/naruto-shippuden',
-  levenshtein: 2
-},
-{
-  source: 'CHIA-ANIME',
-  title: 'Naruto Shippuden (TV)',
-  link: 'http://www.chia-anime.me/episode/naruto%e3%83%8a%e3%83%ab%e3%83%88%e7%96%be%e9%a2%a8%e4%bc%9danime/',
-  levenshtein: 7
-},
-{
-  source: 'ANIMELAND',
-  title: 'Naruto Shippuden Movie 7 The Last',
-  link: 'https://www.animeland.us/dub/naruto-shippuden-movie-7-the-last',
-  levenshtein: 19
+	source: 'ANIMELAND',
+    title: 'Naruto Shippuden',
+    link: 'https://www.animeland.us/dub/naruto-shippuden',
+    levenshtein: 2
+  },
+  {
+    source: 'CHIA-ANIME',
+    title: 'Naruto Shippuden (TV)',
+    link: 'http://www.chia-anime.me/episode/naruto%e3%83%8a%e3%83%ab%e3%83%88%e7%96%be%e9%a2%a8%e4%bc%9danime/',
+    levenshtein: 7
+  },
+  {
+    source: 'ANIMELAND',
+    title: 'Naruto Shippuden Movie 7 The Last',
+    link: 'https://www.animeland.us/dub/naruto-shippuden-movie-7-the-last',
+    levenshtein: 19
 }]
 ```
 
@@ -90,8 +98,9 @@ Also, you can use the command under for running the test without the linter
 npm run test-no
 ```
 
-There are two kinds of test. First, you have the dynamic tests, those are the tests who run the test on the different website. Basically, it's the tests on real situation or you could say the integration tests.
-Secondly, you have the static tests. Those tests go more deep into the code. The modification on the actual website does not affect those test. Those tests are executed on mock of the page. They could be considered as my unit tests.
+The API has two kind of tests.
+1. dynamic : Perform query on the real Website.
+2. static : Run the API through website mock, allowing the tests to be more precise.
 
 ## License
 
