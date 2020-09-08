@@ -15,6 +15,7 @@ module.exports = {
 		return dom.window.document;
 	},
 	search: async (anime_search_link, search) => {
+		if(search === '') return errors.handle_error(errors.ERROR_SEARCH_EMPTY);
 		let search_encoded = search.trim().toLowerCase();
 		search_encoded = encodeURI(search_encoded);
 		const source = await module.exports.url_to_source(anime_search_link + search_encoded);
