@@ -5,7 +5,7 @@ const levenshtein = require('js-levenshtein');
 
 module.exports = {
 	search: async (search, options) => {
-		if (options.website && !options.website.includes(constants_global.WEBSITE.ANIMELAND)) {
+		if (options.website && !options.website.includes(constants_global.WEBSITE.ANIME_XYZ)) {
 			return [];
 		}
 		const doc = await utils.search(constants.URL_SEARCH, search);
@@ -14,7 +14,7 @@ module.exports = {
 		return objects_scrapped_optionned;
 	},
 	scrap_link: (doc, search) => {
-		const elements = [...doc.querySelectorAll('.video_thumb_content .imagelist .title a')];
+		const elements = [...doc.querySelectorAll('.template-page .post-content .post-title a')];
 		const objects_scrapped = elements.map((element, index) => {
 			const object_scrapped = {};
 			object_scrapped.source = constants.NAME;

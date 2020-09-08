@@ -11,7 +11,7 @@ const scope = nock('https://www.animeland.us')
 	.replyWithFile(200, './tests/static/animeland/animeland_search.html');
 
 test('[STATIC] Testing the search on the saved page of ANIMELAND', async t => {
-	const links = await m.links('mock anime api');
+	const links = await m.links('mock anime api', {website: 'ANIMELAND'});
 
 	t.assert(links.length === 7);
 	t.is(links[0].source, 'ANIMELAND');
@@ -36,7 +36,7 @@ test('[STATIC] Testing the search on the saved page of ANIMELAND', async t => {
 });
 
 test('[STATIC] Testing the options limit_per_website', async t => {
-	const links = await m.links('mock anime api', {limit_per_website: 1});
+	const links = await m.links('mock anime api', {website: 'ANIMELAND', limit_per_website: 1});
 
 	t.assert(links.length === 1);
 	t.is(links[0].source, 'ANIMELAND');
@@ -46,7 +46,7 @@ test('[STATIC] Testing the options limit_per_website', async t => {
 });
 
 test('[STATIC] Testing the options limit', async t => {
-	const links = await m.links('mock anime api', {limit: 2});
+	const links = await m.links('mock anime api', {website: 'ANIMELAND', limit: 2});
 
 	t.assert(links.length === 2);
 	t.is(links[0].source, 'ANIMELAND');

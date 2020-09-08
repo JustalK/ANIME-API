@@ -27,6 +27,18 @@ module.exports = {
 		const source = await module.exports.url_to_source(anime_search_link + search_encoded);
 		return module.exports.source_to_dom(source);
 	},
+	clean_title: (title, clean_option) => {
+		if(clean_option.TV) {
+			title = title.replace('(TV)','');
+		}
+
+		if(clean_option.OVA) {
+			title = title.replace('(OVA)','');
+		}
+
+		title = title.trim();
+		return title;
+	},
 	apply_options: (objects, options) => {
 		if (options.limit_per_website) {
 			objects = objects.slice(0, options.limit_per_website);
