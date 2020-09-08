@@ -11,5 +11,9 @@ module.exports = {
 	source_to_dom: source => {
 		const dom = new JSDOM(source);
 		return dom.window.document;
+	},
+	search: async (anime_search_link, search) => {
+		const source = await module.exports.url_to_source(anime_search_link + search);
+		return module.exports.source_to_dom(source);
 	}
 };

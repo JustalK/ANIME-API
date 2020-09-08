@@ -4,8 +4,7 @@ const constants = require('./constants');
 
 module.exports = {
 	search: async search => {
-		const source = await utils.url_to_source(constants.URL_SEARCH + search);
-		const doc = utils.source_to_dom(source);
+		const doc = await utils.search(constants.URL_SEARCH, search);
 		return module.exports.scrap_link(doc);
 	},
 	scrap_link: doc => {
