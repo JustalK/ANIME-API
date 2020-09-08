@@ -27,6 +27,17 @@ module.exports = {
 		const source = await module.exports.url_to_source(anime_search_link + search_encoded);
 		return module.exports.source_to_dom(source);
 	},
+	apply_options: (objects, options) => {
+		if (options.limit_per_website) {
+			objects = objects.slice(0, options.limit_per_website);
+		}
+
+		if (options.limit) {
+			objects = objects.slice(0, options.limit);
+		}
+
+		return objects;
+	},
 	compare_by_levenshtein: (a, b) => {
 		if (a.levenshtein > b.levenshtein) {
 			return 1;

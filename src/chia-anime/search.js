@@ -7,7 +7,7 @@ module.exports = {
 	search: async (search, options) => {
 		const doc = await utils.search(constants.URL_SEARCH, search);
 		const objects_scrapped = module.exports.scrap_link(doc, search);
-		const objects_scrapped_optionned = module.exports.apply_options(objects_scrapped, options);
+		const objects_scrapped_optionned = utils.apply_options(objects_scrapped, options);
 		return objects_scrapped_optionned;
 	},
 	scrap_link: (doc, search) => {
@@ -22,13 +22,5 @@ module.exports = {
 		});
 		objects_scrapped.sort(utils.compare_by_levenshtein);
 		return objects_scrapped;
-	},
-	apply_options: (objects_scrapped, options) => {
-		let objects_scrapped_optionned = objects_scrapped;
-		if (options.limit_per_website) {
-			objects_scrapped_optionned = objects_scrapped_optionned.slice(0, options.limit_per_website);
-		}
-
-		return objects_scrapped_optionned;
 	}
 };

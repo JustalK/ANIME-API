@@ -8,6 +8,7 @@ module.exports = {
 		rsl = [...rsl, ...await animeland.search(search, options)];
 		rsl = [...rsl, ...await chiaanime.search(search, options)];
 		rsl.sort(utils.compare_by_levenshtein);
+		rsl = utils.apply_options(rsl, options);
 		return rsl;
 	}
 };

@@ -7,7 +7,7 @@ const nock = require('nock');
 **/
 const scope = nock('https://www.animeland.us')
 	.get('/?s=mock%20anime%20api')
-	.times(2)
+	.times(3)
 	.replyWithFile(200, './tests/static/animeland/animeland_search.html');
 
 test('[STATIC] Testing the search on the saved page of ANIMELAND', async t => {
@@ -43,4 +43,19 @@ test('[STATIC] Testing the options limit_per_website', async t => {
 	t.is(links[0].title, 'Naruto');
 	t.is(links[0].link, 'https://www.animeland.us/dub/naruto');
 	t.is(links[0].levenshtein, 13);
+});
+
+test('[STATIC] Testing the options limit', async t => {
+	const links = await m.links('mock anime api', {limit: 2});
+
+	t.assert(links.length === 2);
+	t.is(links[0].source, 'ANIMELAND');
+	t.is(links[0].title, 'Naruto');
+	t.is(links[0].link, 'https://www.animeland.us/dub/naruto');
+	t.is(links[0].levenshtein, 13);
+
+	t.is(links[1].source, 'ANIMELAND');
+	t.is(links[1].title, 'Naruto Shippuden');
+	t.is(links[1].link, 'https://www.animeland.us/dub/naruto-shippuden');
+	t.is(links[1].levenshtein, 14);
 });
