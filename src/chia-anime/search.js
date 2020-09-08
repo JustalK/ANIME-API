@@ -9,7 +9,7 @@ module.exports = {
 		return module.exports.scrap_link(doc);
 	},
 	scrap_link: doc => {
-		const elements = [...doc.querySelectorAll('.video_thumb_content .imagelist .title a')];
+		const elements = [...doc.querySelectorAll('div div a')];
 		const objects_scrapped = elements.map((element, index) => {
 			const object_scrapped = {};
 			object_scrapped.title = element.innerHTML ? element.innerHTML : constants_global.NO_DATA;
