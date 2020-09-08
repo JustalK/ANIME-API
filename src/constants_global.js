@@ -1,3 +1,3 @@
 module.exports = {
-	NO_DATA: 'No Data'
+	GLOBAL_NO_DATA: 'No Data'
 };

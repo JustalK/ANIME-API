@@ -1,5 +1,4 @@
 const utils = require('../utils');
-const constants_global = require('../constants_global');
 const constants = require('./constants');
 const levenshtein = require('js-levenshtein');
 
@@ -13,8 +12,8 @@ module.exports = {
 		const objects_scrapped = elements.map((element, index) => {
 			const object_scrapped = {};
 			object_scrapped.source = constants.NAME;
-			object_scrapped.title = element.innerHTML ? element.innerHTML : constants_global.NO_DATA;
-			object_scrapped.link = element.getAttribute('href') ? element.getAttribute('href') : constants_global.NO_DATA;
+			object_scrapped.title = element.innerHTML ? element.innerHTML : constants.GLOBAL_NO_DATA;
+			object_scrapped.link = element.getAttribute('href') ? element.getAttribute('href') : constants.GLOBAL_NO_DATA;
 			object_scrapped.levenshtein = levenshtein(object_scrapped.title, search);
 			return object_scrapped;
 		});
