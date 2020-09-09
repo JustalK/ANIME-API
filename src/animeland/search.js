@@ -14,6 +14,18 @@ module.exports = {
 		const objects_scrapped_optionned = utils.apply_options(objects_scrapped, options);
 		return objects_scrapped_optionned;
 	},
+	stream: async (search, episode, options) => {
+		if (options.website && !options.website.includes(constants_global.WEBSITE.ANIMELAND)) {
+			return [];
+		}
+
+		const search_best_one = await module.exports.search(search, {limit_per_website: 1});
+		console.log(search_best_one);
+		const source = utils.url_to_source(search_best_one[0].link);
+		const dom = utils.source_to_dom(source);
+		console.log(dom);
+		return '';
+	},
 	scrap_link: (doc, search) => {
 		const elements = [...doc.querySelectorAll('.video_thumb_content .imagelist .title a')];
 		const objects_scrapped = elements.map((element, index) => {

@@ -12,5 +12,10 @@ module.exports = {
 		rsl.sort(utils.compare_by_levenshtein);
 		rsl = utils.apply_options(rsl, options);
 		return rsl;
+	},
+	stream: async (search, episode, options = {}) => {
+		let rsl = [];
+		rsl = [...rsl, ...await animeland.stream(search, episode, options)];
+		return rsl;
 	}
 };

@@ -16,7 +16,11 @@
     "url": "git+https://github.com/JustalK/ANIME-API.git"
   },
   "keywords": [
-    "anime"
+    "anime",
+	"download",
+	"scraper",
+	"search",
+	"manga"
   ],
   "author": "Justal Kevin",
   "license": "MIT",
