@@ -3,6 +3,12 @@ const constants_global = require('../constants_global');
 const constants = require('./constants');
 const levenshtein = require('js-levenshtein');
 
+function sleep(ms) {
+  return new Promise((resolve) => {
+    setTimeout(resolve, ms);
+  });
+}
+
 module.exports = {
 	search: async (search, options) => {
 		if (options.website && !options.website.includes(constants_global.WEBSITE.ANIMELAND)) {
@@ -20,10 +26,10 @@ module.exports = {
 		}
 
 		const search_best_one = await module.exports.search(search, {limit_per_website: 1});
-		console.log(search_best_one);
-		const source = utils.url_to_source(search_best_one[0].link);
-		const dom = utils.source_to_dom(source);
-		console.log(dom);
+		const source = await utils.url_to_source(search_best_one[0].link);
+		const doc = utils.source_to_dom(source);
+		const object_stream = module.exports.scrap_stream(doc, episode)
+		console.log(object_stream);
 		return '';
 	},
 	scrap_link: (doc, search) => {
@@ -39,5 +45,9 @@ module.exports = {
 		});
 		objects_scrapped.sort(utils.compare_by_levenshtein);
 		return objects_scrapped;
+	},
+	scrap_stream: (doc, episode) => {
+		const elements = [...doc.querySelectorAll('.video_thumb_content .anime-col li a')];
+		const object_stream = elements.find(element => element.innerHTML == 'Episode '+episode);
 	}
 };

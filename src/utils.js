@@ -7,9 +7,10 @@ module.exports = {
 	url_to_source: async url => {
 		const safe_url = url.toLowerCase();
 		try {
-			const response = await got(safe_url);
+			const response = await got(safe_url, {cookieJar});
 			return response.body;
-		} catch {
+		} catch(err) {
+			console.log(err);
 			return errors.handle_error(errors.ERROR_WRONG_STATUS_CODE, {url: safe_url});
 		}
 	},
