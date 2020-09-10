@@ -19,6 +19,5 @@ test('[DYNAMIC] Testing the search on the different website', async t => {
 test('[DYNAMIC] Testing the search of a streaming on the different website', async t => {
 	const stream = await m.stream('naruto shippuden', 500);
 
-	console.log(stream);
 	t.assert(stream.length > 0);
 });

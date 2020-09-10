@@ -33,13 +33,12 @@
     "coveralls": "^3.1.0",
     "nock": "^13.0.4",
     "nyc": "^15.1.0",
+    "winston": "^3.3.3",
     "xo": "^0.33.1"
   },
   "dependencies": {
     "js-levenshtein": "^1.1.6",
     "jsdom": "^16.4.0",
-    "puppeteer": "^5.2.1",
-    "puppeteer-core": "^5.2.1",
-    "python-shell": "^2.0.1"
+    "puppeteer": "^5.2.1"
   }
 }
