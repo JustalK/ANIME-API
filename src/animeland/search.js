@@ -28,9 +28,8 @@ module.exports = {
 		const search_best_one = await module.exports.search(search, {limit_per_website: 1});
 		const source = await utils.url_to_source(search_best_one[0].link);
 		const doc = utils.source_to_dom(source);
-		const object_stream = module.exports.scrap_stream(doc, episode)
-		console.log(object_stream);
-		return '';
+		const object_stream = module.exports.scrap_stream(doc, episode);
+		return object_stream;
 	},
 	scrap_link: (doc, search) => {
 		const elements = [...doc.querySelectorAll('.video_thumb_content .imagelist .title a')];
@@ -49,5 +48,9 @@ module.exports = {
 	scrap_stream: (doc, episode) => {
 		const elements = [...doc.querySelectorAll('.video_thumb_content .anime-col li a')];
 		const object_stream = elements.find(element => element.innerHTML == 'Episode '+episode);
+		const object_scrapped = {};
+		object_scrapped.source = constants.NAME;
+		object_scrapped.link = object_stream.getAttribute('href');
+		return object_scrapped;
 	}
 };

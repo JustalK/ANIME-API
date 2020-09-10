@@ -15,7 +15,7 @@ module.exports = {
 	},
 	stream: async (search, episode, options = {}) => {
 		let rsl = [];
-		rsl = [...rsl, ...await animeland.stream(search, episode, options)];
+		rsl.push(await animeland.stream(search, episode, options));
 		return rsl;
 	}
 };
