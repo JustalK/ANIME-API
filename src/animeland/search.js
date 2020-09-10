@@ -3,12 +3,6 @@ const constants_global = require('../constants_global');
 const constants = require('./constants');
 const levenshtein = require('js-levenshtein');
 
-function sleep(ms) {
-  return new Promise((resolve) => {
-    setTimeout(resolve, ms);
-  });
-}
-
 module.exports = {
 	search: async (search, options) => {
 		if (options.website && !options.website.includes(constants_global.WEBSITE.ANIMELAND)) {
@@ -21,7 +15,7 @@ module.exports = {
 			const objects_scrapped_optionned = utils.apply_options(objects_scrapped, options);
 			return objects_scrapped_optionned;
 		}
-		
+
 		return [];
 	},
 	stream: async (search, episode, options) => {
@@ -36,6 +30,7 @@ module.exports = {
 			const object_stream = module.exports.scrap_stream(doc, episode);
 			return object_stream;
 		}
+
 		return [];
 	},
 	scrap_link: (doc, search) => {
@@ -54,7 +49,7 @@ module.exports = {
 	},
 	scrap_stream: (doc, episode) => {
 		const elements = [...doc.querySelectorAll('.video_thumb_content .anime-col li a')];
-		const object_stream = elements.find(element => element.innerHTML == 'Episode '+episode);
+		const object_stream = elements.find(element => element.innerHTML === 'Episode ' + episode);
 		const object_scrapped = {};
 		object_scrapped.source = constants.NAME;
 		object_scrapped.link = object_stream.getAttribute('href');

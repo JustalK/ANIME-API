@@ -15,7 +15,7 @@ module.exports = {
 			const objects_scrapped_optionned = utils.apply_options(objects_scrapped, options);
 			return objects_scrapped_optionned;
 		}
-		
+
 		return [];
 	},
 	scrap_link: (doc, search) => {

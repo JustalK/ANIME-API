@@ -10,22 +10,23 @@ module.exports = {
 		try {
 			const response = await got(safe_url);
 			return response.body;
-		} catch(err) {
+		} catch {
 			return errors.handle_error(errors.ERROR_WRONG_STATUS_CODE, {url: safe_url});
 		}
 	},
 	url_to_cloudflare_source: async url => {
+		const safe_url = url.toLowerCase();
 		try {
 			const browser = await puppeteer.launch();
 			const page = await browser.newPage();
 			await page.setUserAgent('5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36');
-			await page.goto('https://www.animeland.us/dub/naruto-shippuden');
-			await page.waitForSelector('#main', { visible: true, timeout: 20000 });
+			await page.goto(safe_url);
+			await page.waitForSelector('#main', {visible: true, timeout: 20000});
 			const response = await page.content();
 			await browser.close();
 			return response;
-		} catch(err) {
-			//errors.handle_error(errors.ERROR_WRONG_STATUS_CODE, {url: safe_url});
+		} catch {
+			errors.handle_error(errors.ERROR_WRONG_STATUS_CODE, {url: safe_url});
 			return null;
 		}
 	},
