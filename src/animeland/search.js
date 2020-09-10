@@ -26,10 +26,13 @@ module.exports = {
 		}
 
 		const search_best_one = await module.exports.search(search, {limit_per_website: 1});
-		const source = await utils.url_to_source(search_best_one[0].link);
-		const doc = utils.source_to_dom(source);
-		const object_stream = module.exports.scrap_stream(doc, episode);
-		return object_stream;
+		const source = await utils.url_to_cloudflare_source(search_best_one[0].link);
+		if (source !== null) {
+			const doc = utils.source_to_dom(source);
+			const object_stream = module.exports.scrap_stream(doc, episode);
+			return object_stream;
+		}
+		return [];
 	},
 	scrap_link: (doc, search) => {
 		const elements = [...doc.querySelectorAll('.video_thumb_content .imagelist .title a')];

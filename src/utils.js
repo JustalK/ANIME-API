@@ -11,18 +11,22 @@ module.exports = {
 			const response = await got(safe_url);
 			return response.body;
 		} catch(err) {
-			// If the website has a cloudflare protection
-			if (err.statusCode === 503) {
-				const browser = await puppeteer.launch();
-		    	const page = await browser.newPage();
-				await page.setUserAgent('5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36');
-		    	await page.goto('https://www.animeland.us/dub/naruto-shippuden');
-				await page.waitForSelector('#main', { visible: true, timeout: 20000 });
-  				const response = await page.content();
-				await browser.close();
-				return response;
-			}
 			return errors.handle_error(errors.ERROR_WRONG_STATUS_CODE, {url: safe_url});
+		}
+	},
+	url_to_cloudflare_source: async url => {
+		try {
+			const browser = await puppeteer.launch();
+			const page = await browser.newPage();
+			await page.setUserAgent('5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36');
+			await page.goto('https://www.animeland.us/dub/naruto-shippuden');
+			await page.waitForSelector('#main', { visible: true, timeout: 20000 });
+			const response = await page.content();
+			await browser.close();
+			return response;
+		} catch(err) {
+			//errors.handle_error(errors.ERROR_WRONG_STATUS_CODE, {url: safe_url});
+			return null;
 		}
 	},
 	source_to_dom: source => {
