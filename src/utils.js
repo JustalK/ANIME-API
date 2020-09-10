@@ -2,15 +2,22 @@ const errors = require('./errors');
 const got = require('got');
 const jsdom = require('jsdom');
 const {JSDOM} = jsdom;
+const puppeteer = require('puppeteer');
 
 module.exports = {
 	url_to_source: async url => {
 		const safe_url = url.toLowerCase();
 		try {
-			const response = await got(safe_url, {cookieJar});
+			const response = await got(safe_url);
 			return response.body;
 		} catch(err) {
-			console.log(err);
+			const browser = await puppeteer.launch();
+		    const page = await browser.newPage();
+			await page.setUserAgent('5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36');
+		    await page.goto('https://www.animeland.us/dub/naruto-shippuden');
+			await page.waitForSelector('.video_wrapper', { visible: true, timeout: 0 });
+  			await page.screenshot({path: 'example.png'});
+			await browser.close();
 			return errors.handle_error(errors.ERROR_WRONG_STATUS_CODE, {url: safe_url});
 		}
 	},
