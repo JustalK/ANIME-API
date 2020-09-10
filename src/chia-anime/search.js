@@ -10,9 +10,13 @@ module.exports = {
 		}
 
 		const doc = await utils.search(constants.URL_SEARCH, search);
-		const objects_scrapped = module.exports.scrap_link(doc, search);
-		const objects_scrapped_optionned = utils.apply_options(objects_scrapped, options);
-		return objects_scrapped_optionned;
+		if (doc !== null) {
+			const objects_scrapped = module.exports.scrap_link(doc, search);
+			const objects_scrapped_optionned = utils.apply_options(objects_scrapped, options);
+			return objects_scrapped_optionned;
+		}
+		
+		return [];
 	},
 	scrap_link: (doc, search) => {
 		const elements = [...doc.querySelectorAll('div div a')];

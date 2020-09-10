@@ -35,7 +35,8 @@ module.exports = {
 	},
 	search: async (anime_search_link, search) => {
 		if (search === '') {
-			return errors.handle_error(errors.ERROR_SEARCH_EMPTY);
+			errors.handle_error(errors.ERROR_SEARCH_EMPTY);
+			return null;
 		}
 
 		let search_encoded = search.trim().toLowerCase();
