@@ -15,6 +15,15 @@ Api for searching page link, download link, streaming link of an anime and a pre
 
 `npm install @justalk/anime-api`
 
+## Short Example
+
+If you want to search for a streaming link of the episode 387 of naruto shippuden
+
+```js
+const animeapi = require('@justalk/anime-api');
+const stream = await animeapi.stream('naruto shippuden', 387);
+```
+
 ## Features
 
 - **Get page links:** Get the page links of the anime on many website by searching an anime by name
@@ -25,7 +34,7 @@ Api for searching page link, download link, streaming link of an anime and a pre
 
 ## API
 
-### Search by anime name
+### Search page link by anime name
 
 ```js
 async links(search, options)
@@ -36,35 +45,46 @@ async links(search, options)
 | search | String | name of the anime searched |
 | options | Object | (optionnal) List of the options |
 
-###### Lists of optionnal options available
+###### Lists of optionnal options available for page links
 
 | name of key | return type | description |
 | :--- | :---------- | :--- |
 | limit_per_website | Number | Limit the number of result per website |
 | limit | Number | Limit the number of total result |
-| website | String | Website that you wanna target |
+| website | String | Website that you wanna target, see under for the complete list |
 
+### Search streaming link by anime name
 
-## List of website available
+| name | type | description |
+| :--- | :---------- | :--- |
+| search | String | name of the anime searched |
+| episode | Number | number of the episode searched |
+| options | Object | (optionnal) List of the options |
+
+### List of website available
 
 The list below show the website scraped by the API and the website available for the option `website`
 
-1. ANIMELAND
-2. CHIA-ANIME
-3. ANIME-XYZ
+| website variable | website url |
+| :--- | :---------- |
+| ANIMELAND | https://www.animeland.us/ |
+| CHIA-ANIME | http://www.chia-anime.me/ |
+| ANIMEOUT | https://www.animeout.xyz/ |
 
 The list is increasing slowly. I am working on it.
 
 ### Examples
 
+###### Searching page link of naruto shippuden
+
 ```js
-const animeApi = require('@latsuj/anime-api');
-const results = await animeApi.links('Naruto shippuden');
+const animeapi = require('@latsuj/anime-api');
+const results = await animeapi.links('Naruto shippuden');
 ```
 
 ```js
 results = [{
-	source: 'ANIMELAND',
+    source: 'ANIMELAND',
     title: 'Naruto Shippuden',
     link: 'https://www.animeland.us/dub/naruto-shippuden',
     levenshtein: 2
@@ -76,14 +96,31 @@ results = [{
     levenshtein: 7
   },
   {
-    source: 'ANIMELAND',
+    source: 'ANIMEOUT',
     title: 'Naruto Shippuden Movie 7 The Last',
     link: 'https://www.animeland.us/dub/naruto-shippuden-movie-7-the-last',
     levenshtein: 19
 }]
 ```
+###### Searching page link of naruto shippuden
 
-### How to test
+```js
+const animeapi = require('@justalk/anime-api');
+const stream = await animeapi.stream('naruto shippuden', 387);
+```
+
+```js
+results = [{
+    source: 'ANIMELAND',
+    link: 'https://www.animeland.us/naruto-shippuden-episode-500-english-dubbed'
+  },
+  {
+    source: 'CHIA-ANIME',
+    link: 'http://www.chia-anime.me/naruto-shippuden-episode-500-english-subbed/'
+}]
+```
+
+### How to contribute/test
 
 For testing, install the node project and run the test command.
 
@@ -101,6 +138,8 @@ npm run test-no
 The API has two kind of tests.
 1. dynamic : Perform query on the real Website.
 2. static : Run the API through website mock, allowing the tests to be more precise.
+
+I am also using `winston` for filling up logs.
 
 ## License
 
