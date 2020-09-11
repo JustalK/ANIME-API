@@ -28,9 +28,9 @@ const stream = await animeapi.stream('naruto shippuden', 387);
 
 - **Get page links:** Get the page links of the anime on many website by searching an anime by name
 
-- **Get download links:** Get the direct download link of an episode of an anime by anime name (incomming)
+- **Get streaming links:** Get the streaming link of an episode of an anime by anime name
 
-- **Get streaming links:** Get the streaming link of an episode of an anime by anime name (incomming)
+- **Get download links:** Get the direct download link of an episode of an anime by anime name (incomming)
 
 ## API
 
@@ -70,6 +70,7 @@ The list below show the website scraped by the API and the website available for
 | ANIMELAND | https://www.animeland.us/ |
 | CHIA-ANIME | http://www.chia-anime.me/ |
 | ANIMEOUT | https://www.animeout.xyz/ |
+| GOGOANIME | https://www3.gogoanime.pro/ |
 
 The list is increasing slowly. I am working on it.
 
