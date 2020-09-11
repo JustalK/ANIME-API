@@ -40,7 +40,7 @@ module.exports = {
 		const dom = new JSDOM(source, { virtualConsole });
 		return dom.window.document;
 	},
-	search: async (anime_search_link, search) => {
+	search: async (anime_search_link, search, dom = true) => {
 		if (search === '') {
 			errors.handle_error(errors.ERROR_SEARCH_EMPTY);
 			return null;
@@ -49,7 +49,7 @@ module.exports = {
 		let search_encoded = search.trim().toLowerCase();
 		search_encoded = encodeURI(search_encoded);
 		const source = await module.exports.url_to_source(anime_search_link + search_encoded);
-		return module.exports.source_to_dom(source);
+		return dom ? module.exports.source_to_dom(source) : source;
 	},
 	clean_title: (title, clean_option) => {
 		if (clean_option.BRACKET) {

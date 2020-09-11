@@ -3,11 +3,11 @@ const constants_global = require('../constants_global');
 const levenshtein = require('js-levenshtein');
 
 module.exports = {
-	search: async (website, url, search, options, fn) => {
+	search: async (website, url, search, options, fn, dom = true) => {
 		if (options.website && !options.website.includes(website)) {
 			return [];
 		}
-		const doc = await utils.search(url, search);
+		const doc = await utils.search(url, search, dom);
 		if (doc !== null) {
 			const objects_scrapped = fn(doc, search);
 			const objects_scrapped_optionned = utils.apply_options(objects_scrapped, options);
