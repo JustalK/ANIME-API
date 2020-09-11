@@ -31,7 +31,8 @@ module.exports = {
 		}
 	},
 	source_to_dom: source => {
-		const dom = new JSDOM(source);
+		const virtualConsole = new jsdom.VirtualConsole();
+		const dom = new JSDOM(source, { virtualConsole });
 		return dom.window.document;
 	},
 	search: async (anime_search_link, search) => {

@@ -7,7 +7,6 @@ module.exports = {
 		if (options.website && !options.website.includes(website)) {
 			return [];
 		}
-
 		const doc = await utils.search(url, search);
 		if (doc !== null) {
 			const objects_scrapped = fn(doc, search);

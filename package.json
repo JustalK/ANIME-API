@@ -8,7 +8,7 @@
   },
   "scripts": {
     "test": "xo && nyc --reporter=html --reporter=text ava --verbose",
-    "test-no": "ava tests/static/animeout/tests_search.js",
+    "test-no": "ava tests/dynamic/tests_search.js",
     "coverage": "nyc report --reporter=text-lcov | coveralls"
   },
   "repository": {

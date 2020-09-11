@@ -15,7 +15,9 @@ module.exports = {
 	},
 	stream: async (search, episode, options = {}) => {
 		const rsl = [];
-		rsl.push(await animeland.stream(search, episode, options));
+		//rsl.push(await animeland.stream(search, episode, options));
+		rsl.push(await chiaanime.stream(search, episode, options));
+		console.log(rsl);
 		return rsl;
 	}
 };
