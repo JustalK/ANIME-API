@@ -1,6 +1,6 @@
 {
   "name": "@justalk/anime-api",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "An api for searching download links, streaming links, pages for your favorite animes",
   "main": "index.js",
   "engines": {
