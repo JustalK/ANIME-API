@@ -1,7 +1,7 @@
 {
   "name": "@justalk/anime-api",
   "version": "2.0.0",
-  "description": "An api for searching a download link for an anime through many different website",
+  "description": "An api for searching download links, streaming links, pages for your favorite animes",
   "main": "index.js",
   "engines": {
     "node": ">=12.0.0"
@@ -20,7 +20,9 @@
     "download",
     "scraper",
     "search",
-    "manga"
+    "manga",
+    "anime-api",
+    "streaming"
   ],
   "author": "Justal Kevin",
   "license": "MIT",
