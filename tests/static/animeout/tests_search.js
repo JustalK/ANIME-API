@@ -13,7 +13,6 @@ const scope = nock('https://www.animeout.xyz')
 test('[STATIC] Testing the search on the saved page of ANIMEOUT', async t => {
 	const links = await m.links('naruto shippuden', {website: 'ANIMEOUT'});
 
-	console.log(links);
 	t.assert(links.length === 16);
 	t.is(links[0].source, 'ANIMEOUT');
 	t.is(links[0].title, 'Naruto Shippuuden');

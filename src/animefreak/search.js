@@ -6,10 +6,10 @@ const levenshtein = require('js-levenshtein');
 
 module.exports = {
 	search: async (search, options) => {
-		return libs.search(constants_global.WEBSITE.ANIMEOUT, constants.URL_SEARCH, search, options, module.exports.scrap_link, false);
+		return libs.search(constants_global.WEBSITE.ANIMEFREAK, constants.URL_SEARCH, search, options, module.exports.scrap_link, false);
 	},
 	scrap_link: (doc, search) => {
-		const json = JSON.parse(doc)
+		const json = JSON.parse(doc);
 		const elements = json.data;
 		const objects_scrapped = elements.map((element, index) => {
 			const object_scrapped = {};

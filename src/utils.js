@@ -20,8 +20,8 @@ module.exports = {
 		const browser = await puppeteer.launch();
 		const page = await browser.newPage();
 		try {
-			page.setDefaultTimeout(10000)
-			page.setDefaultNavigationTimeout(10000)
+			page.setDefaultTimeout(10000);
+			page.setDefaultNavigationTimeout(10000);
 			await page.setUserAgent('5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36');
 			await page.goto(safe_url);
 			await page.waitForSelector('#main', {visible: true});
@@ -37,7 +37,7 @@ module.exports = {
 		}
 	},
 	source_to_dom: source => {
-		const dom = new JSDOM(source, { virtualConsole });
+		const dom = new JSDOM(source, {virtualConsole});
 		return dom.window.document;
 	},
 	search: async (anime_search_link, search, dom = true) => {
@@ -80,18 +80,5 @@ module.exports = {
 		}
 
 		return 0;
-	},
-	promiseTimeout: (ms, promise) => {
-		const timeout = new Promise((resolve, reject) => {
-			const id = setTimeout(() => {
-				clearTimeout(id);
-				resolve(null);
-			}, ms)
-		})
-
-		return Promise.race([
-			promise,
-			timeout
-		])
 	}
 };

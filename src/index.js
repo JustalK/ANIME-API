@@ -7,7 +7,7 @@ const utils = require('./utils');
 
 module.exports = {
 	links: async (search, options = {}) => {
-		let promises = [];
+		const promises = [];
 		const stream_animeland = animeland.search(search, options);
 		const stream_chiaanime = chiaanime.search(search, options);
 		const stream_animeout = animeout.search(search, options);
@@ -25,7 +25,7 @@ module.exports = {
 		return rsl;
 	},
 	stream: async (search, episode, options = {}) => {
-		let promises = [];
+		const promises = [];
 		const stream_animeland = animeland.stream(search, episode, options);
 		const stream_chiaanime = chiaanime.stream(search, episode, options);
 		promises.push(stream_animeland);
