@@ -46,12 +46,8 @@ module.exports = {
 		return module.exports.source_to_dom(source);
 	},
 	clean_title: (title, clean_option) => {
-		if (clean_option.TV) {
-			title = title.replace('(TV)', '');
-		}
-
-		if (clean_option.OVA) {
-			title = title.replace('(OVA)', '');
+		if (clean_option.BRACKET) {
+			title = title.replace(/\([^)]*\)/gi, '');
 		}
 
 		title = title.trim();

@@ -9,7 +9,7 @@ module.exports = {
 		return libs.search(constants_global.WEBSITE.ANIMELAND, constants.URL_SEARCH, search, options, module.exports.scrap_link);
 	},
 	scrap_link: (doc, search) => {
-		return libs.scrap_link(constants_global.WEBSITE.ANIMELAND, '.video_thumb_content .imagelist .title a', {TV: true}, doc, search);
+		return libs.scrap_link(constants_global.WEBSITE.ANIMELAND, '.video_thumb_content .imagelist .title a', {BRACKET: true}, doc, search);
 	},
 	scrap_stream: (doc, episode) => {
 		const elements = [...doc.querySelectorAll('.video_thumb_content .anime-col li a')];

@@ -9,6 +9,6 @@ module.exports = {
 		return libs.search(constants_global.WEBSITE.CHIA_ANIME, constants.URL_SEARCH, search, options, module.exports.scrap_link);
 	},
 	scrap_link: (doc, search) => {
-		return libs.scrap_link(constants_global.WEBSITE.CHIA_ANIME, 'div div a', {TV: true, OVA: true}, doc, search);
+		return libs.scrap_link(constants_global.WEBSITE.CHIA_ANIME, 'div div a', {BRACKET: true}, doc, search);
 	}
 };
