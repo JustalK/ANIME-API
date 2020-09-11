@@ -20,12 +20,12 @@ module.exports = {
 		const browser = await puppeteer.launch();
 		const page = await browser.newPage();
 		try {
-			page.setDefaultTimeout(10000);
-			page.setDefaultNavigationTimeout(10000);
 			await page.setUserAgent('5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36');
+			console.log(safe_url);
 			await page.goto(safe_url);
-			await page.waitForSelector('#main', {visible: true});
+			await page.waitForSelector('#main', {visible: true, timeout: 30000});
 			const response = await page.content();
+			console.log(response);
 			await page.close();
 			await browser.close();
 			return response;

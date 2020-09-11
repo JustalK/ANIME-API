@@ -1,14 +1,14 @@
 {
   "name": "@justalk/anime-api",
-  "version": "2.1.4",
+  "version": "2.1.3",
   "description": "An api for searching download links, streaming links, pages for your favorite animes",
   "main": "src/index.js",
   "engines": {
     "node": ">=12.0.0"
   },
   "scripts": {
-    "test": "xo && nyc --reporter=html --reporter=text ava --verbose",
-    "test-no": "ava tests/dynamic/tests_search.js --verbose ",
+    "test": "xo && nyc --reporter=html --reporter=text ava --verbose --timeout=1m",
+    "test-no": "ava tests/dynamic/tests_search.js --verbose --timeout=1m",
     "coverage": "nyc report --reporter=text-lcov | coveralls"
   },
   "repository": {
@@ -40,8 +40,8 @@
   "dependencies": {
     "js-levenshtein": "^1.1.6",
     "jsdom": "^16.4.0",
-    "got": "^11.6.2",
     "puppeteer": "^5.2.1",
+    "got": "^6.6.3",
     "winston": "^3.3.3"
   }
 }
