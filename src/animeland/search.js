@@ -8,6 +8,17 @@ module.exports = {
 	search: async (search, options) => {
 		return libs.search(constants_global.WEBSITE.ANIMELAND, constants.URL_SEARCH, search, options, module.exports.scrap_link);
 	},
+	scrap_link: (doc, search) => {
+		return libs.scrap_link(constants_global.WEBSITE.ANIMELAND, '.video_thumb_content .imagelist .title a', {TV: true}, doc, search);
+	},
+	scrap_stream: (doc, episode) => {
+		const elements = [...doc.querySelectorAll('.video_thumb_content .anime-col li a')];
+		const object_stream = elements.find(element => element.innerHTML === 'Episode ' + episode);
+		const object_scrapped = {};
+		object_scrapped.source = constants.NAME;
+		object_scrapped.link = object_stream.getAttribute('href');
+		return object_scrapped;
+	},
 	stream: async (search, episode, options) => {
 		if (options.website && !options.website.includes(constants_global.WEBSITE.ANIMELAND)) {
 			return [];
@@ -22,16 +33,5 @@ module.exports = {
 		}
 
 		return [];
-	},
-	scrap_link: (doc, search) => {
-		return libs.scrap_link(constants_global.WEBSITE.ANIMELAND, '.video_thumb_content .imagelist .title a', {TV: true}, doc, search);
-	},
-	scrap_stream: (doc, episode) => {
-		const elements = [...doc.querySelectorAll('.video_thumb_content .anime-col li a')];
-		const object_stream = elements.find(element => element.innerHTML === 'Episode ' + episode);
-		const object_scrapped = {};
-		object_scrapped.source = constants.NAME;
-		object_scrapped.link = object_stream.getAttribute('href');
-		return object_scrapped;
 	}
 };

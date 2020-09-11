@@ -1,4 +1,4 @@
 module.exports = {
-	NAME: 'ANIMEXYZ',
+	NAME: 'ANIMEOUT',
 	URL_SEARCH: 'https://www.animeout.xyz/?s='
 };
