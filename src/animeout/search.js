@@ -6,9 +6,9 @@ const levenshtein = require('js-levenshtein');
 
 module.exports = {
 	search: async (search, options) => {
-		return libs.search(constants_global.WEBSITE.CHIA_ANIME, constants.URL_SEARCH, search, options, module.exports.scrap_link);
+		return libs.search(constants_global.WEBSITE.ANIMEOUT, constants.URL_SEARCH, search, options, module.exports.scrap_link);
 	},
 	scrap_link: (doc, search) => {
-		return libs.scrap_link(constants_global.WEBSITE.CHIA_ANIME, 'div div a', {TV: true, OVA: true}, doc, search);
+		return libs.scrap_link(constants_global.WEBSITE.ANIMEOUT, '.template-page .post-content .post-title a', {TV: true}, doc, search);
 	}
 };
