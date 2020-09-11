@@ -71,6 +71,7 @@ The list below show the website scraped by the API and the website available for
 | CHIA-ANIME | http://www.chia-anime.me/ |
 | ANIMEOUT | https://www.animeout.xyz/ |
 | GOGOANIME | https://www3.gogoanime.pro/ |
+| ANIMEFREAK | https://www.animefreak.tv/ |
 
 The list is increasing slowly. I am working on it.
 
