@@ -1,9 +1,10 @@
 const test = require('ava');
 const m = require('../../src');
-
 /**
 test('[DYNAMIC] Testing the search on the different website', async t => {
 	const links = await m.links('naruto shippuden');
+
+	console.log(links);
 
 	t.assert(links.length > 0);
 	t.is(links[0].source, 'ANIMELAND');
@@ -20,5 +21,14 @@ test('[DYNAMIC] Testing the search on the different website', async t => {
 test('[DYNAMIC] Testing the search of a streaming on the different website', async t => {
 	const stream = await m.stream('naruto shippuden', 500);
 
+	console.log(stream);
+
 	t.assert(stream.length > 0);
+	const stream_chiaanime = stream.find(element => element.source === 'CHIA-ANIME');
+	t.is(stream_chiaanime.source, 'CHIA-ANIME');
+	t.is(stream_chiaanime.link, 'http://www.chia-anime.me/naruto-shippuden-episode-500-english-subbed/');
+
+	const stream_animeland = stream.find(element => element.source === 'ANIMELAND');
+	t.is(stream_animeland.source, 'ANIMELAND');
+	t.is(stream_animeland.link, 'https://www.animeland.us/naruto-shippuden-episode-500-english-dubbed');
 });

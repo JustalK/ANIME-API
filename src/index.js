@@ -14,10 +14,14 @@ module.exports = {
 		return rsl;
 	},
 	stream: async (search, episode, options = {}) => {
-		const rsl = [];
-		//rsl.push(await animeland.stream(search, episode, options));
-		rsl.push(await chiaanime.stream(search, episode, options));
-		console.log(rsl);
+		let promises = [];
+		const stream_animeland = animeland.stream(search, episode, options);
+		const stream_chiaanime = chiaanime.stream(search, episode, options);
+		promises.push(stream_animeland);
+		promises.push(stream_chiaanime);
+		let rsl = await Promise.all(promises);
+		// Removing the empty result
+		rsl = rsl.filter(link => link);
 		return rsl;
 	}
 };

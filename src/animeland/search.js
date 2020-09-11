@@ -14,10 +14,14 @@ module.exports = {
 	scrap_stream: (doc, episode) => {
 		const elements = [...doc.querySelectorAll('.video_thumb_content .anime-col li a')];
 		const object_stream = elements.find(element => element.innerHTML === 'Episode ' + episode);
-		const object_scrapped = {};
-		object_scrapped.source = constants.NAME;
-		object_scrapped.link = object_stream.getAttribute('href');
-		return object_scrapped;
+		if (object_stream) {
+			const object_scrapped = {};
+			object_scrapped.source = constants.NAME;
+			object_scrapped.link = object_stream.getAttribute('href');
+			return object_scrapped;
+		}
+
+		return {};
 	},
 	stream: async (search, episode, options) => {
 		if (options.website && !options.website.includes(constants_global.WEBSITE.ANIMELAND)) {
@@ -32,6 +36,6 @@ module.exports = {
 			return object_stream;
 		}
 
-		return [];
+		return {};
 	}
 };
