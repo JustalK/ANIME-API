@@ -27,4 +27,8 @@ test('[DYNAMIC] Testing the search of a streaming on the different website', asy
 	const stream_animeland = stream.find(element => element.source === 'ANIMELAND');
 	t.is(stream_animeland.source, 'ANIMELAND');
 	t.is(stream_animeland.link, 'https://www.animeland.us/naruto-shippuden-episode-500-english-dubbed');
+
+	const stream_animeland = stream.find(element => element.source === 'GOGOANIME');
+	t.is(stream_animeland.source, 'GOGOANIME');
+	t.is(stream_animeland.link, 'https://www3.gogoanime.pro/anime/naruto-shippuden-dub-00zr/ep-500');
 });

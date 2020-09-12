@@ -15,17 +15,15 @@ module.exports = {
 			return errors.handle_error(errors.ERROR_WRONG_STATUS_CODE, {url: safe_url});
 		}
 	},
-	url_to_cloudflare_source: async url => {
+	url_to_cloudflare_source: async (url, waitForElement) => {
 		const safe_url = url.toLowerCase();
 		const browser = await puppeteer.launch();
 		const page = await browser.newPage();
 		try {
 			await page.setUserAgent('5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36');
-			console.log(safe_url);
 			await page.goto(safe_url);
-			await page.waitForSelector('#main', {visible: true, timeout: 30000});
+			await page.waitForSelector(waitForElement, {visible: true, timeout: 30000});
 			const response = await page.content();
-			console.log(response);
 			await page.close();
 			await browser.close();
 			return response;
