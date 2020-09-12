@@ -11,7 +11,7 @@
 
 ![Star the project](https://img.shields.io/github/stars/justalk/anime-api?style=social)
 
-Api for searching page link, download link, streaming link of an anime and a precise episode on many website simultaneously.
+Are you not tired of searching where you can watch or download your favorite animes ? To search on hundred of website until you find what you are looking for ? If yes, this API is for you. This API is a powerful scraper of many streaming and downloading website. With this API, you can search a page about your favorite anime or search for a download link or streaming link for enjoying your favorite animes.
 
 `npm install @justalk/anime-api`
 
@@ -21,7 +21,7 @@ If you want to search for a streaming link of the episode 387 of naruto shippude
 
 ```js
 const animeapi = require('@justalk/anime-api');
-const stream = await animeapi.stream('naruto shippuden', 387);
+const download = await animeapi.download('naruto shippuden', 387);
 ```
 
 ## Features
@@ -30,7 +30,7 @@ const stream = await animeapi.stream('naruto shippuden', 387);
 
 - **Get streaming links:** Get the streaming link of an episode of an anime by anime name
 
-- **Get download links:** Get the direct download link of an episode of an anime by anime name (incomming)
+- **Get download links:** Get the direct download link of an episode of an anime by anime name
 
 ## API
 
@@ -53,13 +53,70 @@ async links(search, options)
 | limit | Number | Limit the number of total result |
 | website | String | Website that you wanna target, see under for the complete list |
 
-### Search streaming link by anime name
+###### Format response of `links`
+
+| name of key | return type | description |
+| :--- | :---------- | :--- |
+| source | String | Name of the source |
+| title | String | Complete title of the anime on the website |
+| link | String | Link of the anime|
+| levenshtein | Number | Difference of character from the search |
+
+The result is order by levenshtein. The first result will be the closest from your research.
+
+### Search streaming links by anime name
+
+```js
+async stream(search, episode, options)
+```
 
 | name | type | description |
 | :--- | :---------- | :--- |
 | search | String | name of the anime searched |
 | episode | Number | number of the episode searched |
 | options | Object | (optionnal) List of the options |
+
+###### Lists of optionnal options available for stream links
+
+| name of key | return type | description |
+| :--- | :---------- | :--- |
+| limit_per_website | Number | Limit the number of result per website |
+
+###### Format response of `stream`
+
+| name of key | return type | description |
+| :--- | :---------- | :--- |
+| source | String | Name of the source |
+| link | String | Link of the stream |
+
+Only one result by source will be provided.
+
+### Search downloading links by anime name
+
+```js
+async download(search, episode, options)
+```
+
+| name | type | description |
+| :--- | :---------- | :--- |
+| search | String | name of the anime searched |
+| episode | Number | number of the episode searched |
+| options | Object | (optionnal) List of the options |
+
+###### Lists of optionnal options available for download links
+
+| name of key | return type | description |
+| :--- | :---------- | :--- |
+| limit_per_website | Number | Limit the number of result per website |
+
+###### Format response of `download`
+
+| name of key | return type | description |
+| :--- | :---------- | :--- |
+| source | String | Name of the source |
+| link | String | Link of the download |
+
+Only one result by source will be provided.
 
 ### List of website available
 
@@ -93,18 +150,18 @@ results = [{
   },
   {
     source: 'CHIA-ANIME',
-    title: 'Naruto Shippuden (TV)',
+    title: 'Naruto Shippuden',
     link: 'http://www.chia-anime.me/episode/naruto%e3%83%8a%e3%83%ab%e3%83%88%e7%96%be%e9%a2%a8%e4%bc%9danime/',
     levenshtein: 7
   },
   {
     source: 'ANIMEOUT',
     title: 'Naruto Shippuden Movie 7 The Last',
-    link: 'https://www.animeland.us/dub/naruto-shippuden-movie-7-the-last',
+    link: 'https://www.animeout.xyz/dub/naruto-shippuden-movie-7-the-last',
     levenshtein: 19
 }]
 ```
-###### Searching page link of naruto shippuden
+###### Searching stream link of naruto shippuden episode 387
 
 ```js
 const animeapi = require('@justalk/anime-api');
@@ -119,6 +176,21 @@ results = [{
   {
     source: 'CHIA-ANIME',
     link: 'http://www.chia-anime.me/naruto-shippuden-episode-500-english-subbed/'
+}]
+```
+
+###### Searching download link of naruto shippuden episode 387 with options
+
+```js
+const animeapi = require('@justalk/anime-api');
+const download = await animeapi.download('naruto shippuden', 387, {website: 'CHIA-ANIME'});
+```
+
+```js
+results = [{
+  {
+    source: 'CHIA-ANIME',
+    link: 'http://www.chia-anime.me/naruto-shippuuden-episode-387-english-subbed/'
 }]
 ```
 
