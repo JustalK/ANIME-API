@@ -40,10 +40,14 @@ const download = await animeapi.download('naruto shippuden', 387);
 async links(search, options)
 ```
 
+<details>
+  <summary><b>More informations</b> (click to show)</summary>
+
 | name | type | description |
 | :--- | :---------- | :--- |
 | search | String | name of the anime searched |
 | options | Object | (optionnal) List of the options |
+
 
 ###### Lists of optionnal options available for page links
 
@@ -64,11 +68,15 @@ async links(search, options)
 
 The result is order by levenshtein. The first result will be the closest from your research.
 
+</details>
+
 ### Search streaming links by anime name
 
 ```js
 async stream(search, episode, options)
 ```
+<details>
+  <summary><b>More informations</b> (click to show)</summary>
 
 | name | type | description |
 | :--- | :---------- | :--- |
@@ -91,11 +99,16 @@ async stream(search, episode, options)
 
 Only one result by source will be provided.
 
+</details>
+
 ### Search downloading links by anime name
 
 ```js
 async download(search, episode, options)
 ```
+
+<details>
+  <summary><b>More informations</b> (click to show)</summary>
 
 | name | type | description |
 | :--- | :---------- | :--- |
@@ -118,6 +131,8 @@ async download(search, episode, options)
 
 Only one result by source will be provided.
 
+</details>
+
 ### List of website available
 
 The list below show the website scraped by the API and the website available for the option `website`
@@ -134,7 +149,8 @@ The list is increasing slowly. I am working on it.
 
 ### Examples
 
-###### Searching page link of naruto shippuden
+<details>
+  <summary><b>Searching page link of naruto shippuden</b> (click to show)</summary>
 
 ```js
 const animeapi = require('@latsuj/anime-api');
@@ -161,7 +177,11 @@ results = [{
     levenshtein: 19
 }]
 ```
-###### Searching stream link of naruto shippuden episode 387
+</details>
+
+<details>
+  <summary><b>Searching stream link of naruto shippuden</b> (click to show)</summary>
+
 
 ```js
 const animeapi = require('@justalk/anime-api');
@@ -179,7 +199,10 @@ results = [{
 }]
 ```
 
-###### Searching download link of naruto shippuden episode 387 with options
+</details>
+
+<details>
+  <summary><b>Searching download link of naruto shippuden episode 387 with options</b> (click to show)</summary>
 
 ```js
 const animeapi = require('@justalk/anime-api');
@@ -193,6 +216,8 @@ results = [{
     link: 'http://www.chia-anime.me/naruto-shippuuden-episode-387-english-subbed/'
 }]
 ```
+
+</details>
 
 ### How to contribute/test
 
