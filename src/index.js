@@ -36,5 +36,14 @@ module.exports = {
 		// Removing the empty result
 		rsl = rsl.filter(link => link);
 		return rsl;
+	},
+	download: async (search, episode, options = {}) => {
+		const promises = [];
+		const stream_chiaanime = chiaanime.download(search, episode, options);
+		promises.push(stream_chiaanime);
+		let rsl = await Promise.all(promises);
+		// Removing the empty result
+		rsl = rsl.filter(link => link);
+		return rsl;
 	}
 };

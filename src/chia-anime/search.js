@@ -26,12 +26,34 @@ module.exports = {
 
 		const search_best_one = await module.exports.search(search, {limit_per_website: 1});
 		const source = await utils.url_to_source(search_best_one[0].link);
-		if (source !== null) {
+		if (source) {
 			const doc = utils.source_to_dom(source);
 			const object_stream = module.exports.scrap_stream(doc, episode);
 			return object_stream;
 		}
 
 		return [];
+	},
+	download: async (search, episode, options) => {
+		if (options.website && !options.website.includes(constants_global.WEBSITE.ANIMELAND)) {
+			return [];
+		}
+
+		const object_stream = await module.exports.stream(search, episode, options);
+		const source = await utils.url_to_source(object_stream.link);
+		if (source) {
+			const doc = utils.source_to_dom(source);
+			const object_download = module.exports.scrap_download(doc);
+			return object_download;
+		}
+
+		return [];
+	},
+	scrap_download: doc => {
+		const object_download = doc.querySelector('#download');
+		const object_scrapped = {};
+		object_scrapped.source = constants.NAME;
+		object_scrapped.link = object_download.getAttribute('href');
+		return object_scrapped;
 	}
 };
