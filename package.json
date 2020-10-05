@@ -31,17 +31,17 @@
   },
   "homepage": "https://github.com/JustalK/ANIME-API#readme",
   "devDependencies": {
-    "ava": "^3.12.1",
+    "ava": "^3.13.0",
     "coveralls": "^3.1.0",
     "nock": "^13.0.4",
     "nyc": "^15.1.0",
     "xo": "^0.33.1"
   },
   "dependencies": {
+    "got": "^6.7.1",
     "js-levenshtein": "^1.1.6",
     "jsdom": "^16.4.0",
-    "puppeteer": "^5.2.1",
-    "got": "^6.6.3",
+    "puppeteer": "^5.3.1",
     "winston": "^3.3.3"
   }
 }
