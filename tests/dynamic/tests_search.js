@@ -19,18 +19,16 @@ test('[DYNAMIC] Testing the search on the different website', async t => {
 test('[DYNAMIC] Testing the search of a streaming links on many websites', async t => {
 	const stream = await m.stream('naruto shippuden', 500);
 
+	console.log(stream);
+
 	t.assert(stream.length > 0);
 	const stream_chiaanime = stream.find(element => element.source === 'CHIA-ANIME');
 	t.is(stream_chiaanime.source, 'CHIA-ANIME');
 	t.is(stream_chiaanime.link, 'http://www.chia-anime.me/naruto-shippuden-episode-500-english-subbed/');
 
-	const stream_animeland = stream.find(element => element.source === 'ANIMELAND');
-	t.is(stream_animeland.source, 'ANIMELAND');
-	t.is(stream_animeland.link, 'https://www.animeland.us/naruto-shippuden-episode-500-english-dubbed');
-
 	const stream_gogoanime = stream.find(element => element.source === 'GOGOANIME');
 	t.is(stream_gogoanime.source, 'GOGOANIME');
-	t.is(stream_gogoanime.link, 'https://www3.gogoanime.pro/anime/naruto-shippuden-dub-00zr/ep-500');
+	t.is(stream_gogoanime.link, 'https://www3.gogoanime.pro/anime/naruto-shippuden-qv3/ep-500');
 });
 
 test('[DYNAMIC] Testing the search of a download links on many websites', async t => {
