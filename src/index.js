@@ -3,6 +3,7 @@ const chiaanime = require('./chia-anime/search');
 const animeout = require('./animeout/search');
 const gogoanime = require('./gogoanime/search');
 const animefreak = require('./animefreak/search');
+const animeheight = require('./animeheight/search');
 const utils = require('./utils');
 
 module.exports = {
@@ -13,11 +14,13 @@ module.exports = {
 		const stream_animeout = animeout.search(search, options);
 		const stream_gogoanime = gogoanime.search(search, options);
 		const stream_animefreak = animefreak.search(search, options);
+		const stream_animeheight = animeheight.search(search, options);
 		promises.push(stream_animeland);
 		promises.push(stream_chiaanime);
 		promises.push(stream_animeout);
 		promises.push(stream_gogoanime);
 		promises.push(stream_animefreak);
+		promises.push(stream_animeheight);
 		let rsl = await Promise.all(promises);
 		rsl = rsl.flat();
 		rsl.sort(utils.compare_by_levenshtein);

@@ -4,6 +4,8 @@ const m = require('../../src');
 test('[DYNAMIC] Testing the search on the different website', async t => {
 	const links = await m.links('naruto shippuden');
 
+	console.log(links);
+
 	t.assert(links.length > 0);
 	t.is(links[0].source, 'ANIMELAND');
 	t.is(links[0].title, 'Naruto Shippuden');
@@ -15,11 +17,9 @@ test('[DYNAMIC] Testing the search on the different website', async t => {
 	t.is(links[1].link, 'http://www.chia-anime.me/episode/naruto%e3%83%8a%e3%83%ab%e3%83%88%e7%96%be%e9%a2%a8%e4%bc%9danime/');
 	t.is(links[1].levenshtein, 2);
 });
-
+/**
 test('[DYNAMIC] Testing the search of a streaming links on many websites', async t => {
 	const stream = await m.stream('naruto shippuden', 500);
-
-	console.log(stream);
 
 	t.assert(stream.length > 0);
 	const stream_chiaanime = stream.find(element => element.source === 'CHIA-ANIME');
@@ -39,3 +39,4 @@ test('[DYNAMIC] Testing the search of a download links on many websites', async 
 	t.is(download_chiaanime.source, 'CHIA-ANIME');
 	t.truthy(download_chiaanime.link);
 });
+**/
