@@ -19,8 +19,6 @@ test('[DYNAMIC] Testing the search on the different website', async t => {
 test('[DYNAMIC] Testing the search of a streaming links on many websites', async t => {
 	const stream = await m.stream('naruto shippuden', 500);
 
-	console.log(stream);
-
 	t.assert(stream.length > 0);
 	const stream_chiaanime = stream.find(element => element.source === 'CHIA-ANIME');
 	t.is(stream_chiaanime.source, 'CHIA-ANIME');

@@ -6,8 +6,7 @@ const puppeteer = require('puppeteer');
 const virtualConsole = new jsdom.VirtualConsole();
 
 module.exports = {
-	url_to_source: async url => {
-		const safe_url = url.toLowerCase();
+	url_to_source: async safe_url => {
 		try {
 			const response = await got(safe_url);
 			return response.body;
@@ -38,13 +37,17 @@ module.exports = {
 		const dom = new JSDOM(source, {virtualConsole});
 		return dom.window.document;
 	},
-	search: async (anime_search_link, search, dom = true) => {
+	search: async (anime_search_link, search, dom = true, space = null) => {
 		if (search === '') {
 			errors.handle_error(errors.ERROR_SEARCH_EMPTY);
 			return null;
 		}
 
 		let search_encoded = search.trim().toLowerCase();
+		if (space) {
+			search_encoded = search_encoded.replace(/\s/g, space);
+		}
+
 		search_encoded = encodeURI(search_encoded);
 		const source = await module.exports.url_to_source(anime_search_link + search_encoded);
 		return dom ? module.exports.source_to_dom(source) : source;
@@ -52,6 +55,11 @@ module.exports = {
 	clean_title: (title, clean_option) => {
 		if (clean_option.BRACKET) {
 			title = title.replace(/\([^)]*\)/gi, '');
+		}
+
+		if (clean_option.EM) {
+			title = title.replace(/<em>/gi, '');
+			title = title.replace(/<\/em>/gi, '');
 		}
 
 		title = title.trim();
