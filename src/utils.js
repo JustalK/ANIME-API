@@ -8,7 +8,7 @@ const fs = require('fs');
 
 module.exports = {
 	get_website_from_directory: path => {
-		const everything = fs.readdirSync(path, { withFileTypes: true });
+		const everything = fs.readdirSync(path, {withFileTypes: true});
 		const directories = everything.filter(files => files.isDirectory());
 		const directories_name = directories.map(directory => directory.name);
 		const directories_name_filtered = directories_name.filter(directory_name => directory_name !== 'global');
