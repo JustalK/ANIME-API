@@ -15,7 +15,6 @@ module.exports = {
 			return objects_scrapped_optionned;
 		}
 
-
 		return [];
 	},
 	scrap_link: (website, selector_all, clean_title, doc, search, selector_title = null) => {
@@ -23,7 +22,7 @@ module.exports = {
 		const objects_scrapped = elements.map((element, index) => {
 			const object_scrapped = {};
 			object_scrapped.source = website;
-			title = selector_title ? element.querySelector(selector_title) : element;
+			const title = selector_title ? element.querySelector(selector_title) : element;
 			object_scrapped.title = title.innerHTML ? title.innerHTML : constants_global.GLOBAL_NO_DATA;
 			object_scrapped.title = utils.clean_title(object_scrapped.title, clean_title);
 			object_scrapped.link = element.getAttribute('href') ? element.getAttribute('href') : constants_global.GLOBAL_NO_DATA;
