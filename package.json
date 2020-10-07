@@ -38,7 +38,7 @@
     "xo": "^0.33.1"
   },
   "dependencies": {
-    "got": "^6.7.1",
+    "got": "^11.7.0",
     "js-levenshtein": "^1.1.6",
     "jsdom": "^16.4.0",
     "puppeteer": "^5.3.1",
