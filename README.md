@@ -144,6 +144,7 @@ The list below show the website scraped by the API and the website available for
 | ANIMEOUT | https://www.animeout.xyz/ |
 | GOGOANIME | https://www3.gogoanime.pro/ |
 | ANIMEFREAK | https://www.animefreak.tv/ |
+| ANIME8 | https://anime8.ru/ |
 
 The list is increasing slowly. I am working on it.
 
