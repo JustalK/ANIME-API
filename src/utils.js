@@ -4,8 +4,22 @@ const jsdom = require('jsdom');
 const {JSDOM} = jsdom;
 const puppeteer = require('puppeteer');
 const virtualConsole = new jsdom.VirtualConsole();
+const fs = require('fs');
 
 module.exports = {
+	get_website_from_directory: path => {
+		const everything = fs.readdirSync(path, {withFileTypes: true});
+		const directories = everything.filter(files => files.isDirectory());
+		const directories_name = directories.map(directory => directory.name);
+		const directories_name_filtered = directories_name.filter(directory_name => directory_name !== 'global');
+		return directories_name_filtered;
+	},
+	get_search_path_for_directory: directory_name => {
+		return './' + directory_name + '/search';
+	},
+	get_search_path_for_directories: directories_name => {
+		return directories_name.map(module.exports.get_search_path_for_directory);
+	},
 	url_to_source: async safe_url => {
 		try {
 			const response = await got(safe_url);

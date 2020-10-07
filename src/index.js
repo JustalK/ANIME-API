@@ -8,19 +8,12 @@ const utils = require('./utils');
 
 module.exports = {
 	links: async (search, options = {}) => {
-		const promises = [];
-		const stream_animeland = animeland.search(search, options);
-		const stream_chiaanime = chiaanime.search(search, options);
-		const stream_animeout = animeout.search(search, options);
-		const stream_gogoanime = gogoanime.search(search, options);
-		const stream_animefreak = animefreak.search(search, options);
-		const stream_animeheight = animeheight.search(search, options);
-		promises.push(stream_animeland);
-		promises.push(stream_chiaanime);
-		promises.push(stream_animeout);
-		promises.push(stream_gogoanime);
-		promises.push(stream_animefreak);
-		promises.push(stream_animeheight);
+		const directories = utils.get_website_from_directory('./src/');
+		const search_paths = utils.get_search_path_for_directories(directories);
+		const promises = search_paths.map(search_path => {
+			const website = require(search_path);
+			return website.search(search, options);
+		});
 		let rsl = await Promise.all(promises);
 		rsl = rsl.flat();
 		rsl.sort(utils.compare_by_levenshtein);
