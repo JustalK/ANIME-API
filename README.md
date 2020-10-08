@@ -145,6 +145,7 @@ The list below show the website scraped by the API and the website available for
 | GOGOANIME | https://www3.gogoanime.pro/ |
 | ANIMEFREAK | https://www.animefreak.tv/ |
 | ANIME8 | https://anime8.ru/ |
+| 9ANIME | http://9anime.to/ |
 
 The list is increasing slowly. I am working on it.
 
