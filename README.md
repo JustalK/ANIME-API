@@ -1,4 +1,4 @@
-# ANIME-API
+![Alt text](imgs/anime-api.jpg?raw=true "ANIME API")
 
 ![Last version npm](https://img.shields.io/npm/v/@justalk/anime-api.svg?style=flat-square)
 ![Last version](https://img.shields.io/github/v/tag/justalk/anime-api.svg?style=flat-square)
