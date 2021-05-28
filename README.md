@@ -1,15 +1,15 @@
 # ANIME-API
 
-![Last version npm](https://img.shields.io/npm/v/ehAsuna/anime-api.svg?style=flat-square)
-![Last version](https://img.shields.io/github/v/tag/ehAsuna/anime-api.svg?style=flat-square)
-[![Node version](https://img.shields.io/node/v/ehAsuna/anime-api.svg?style=flat-square)](https://www.npmjs.com/package/@justalk/anime-api)
-[![Travis](https://img.shields.io/travis/com/ehAsuna/anime-api.svg?style=flat-square)](https://travis-ci.com/github/JustalK/anime-api)
-[![Coverage Status](https://coveralls.io/repos/github/ehAsuna/ANIME-API/badge.svg?branch=master&style=flat-square)](https://coveralls.io/github/JustalK/anime-api?branch=master)
-[![Dependency status](http://img.shields.io/david/ehAsuna/anime-api.svg?style=flat-square)](https://david-dm.org/justalk/anime-api.svg)
-![Last version](https://img.shields.io/github/license/ehAsuna/anime-api.svg?style=flat-square)
+![Last version npm](https://img.shields.io/npm/v/@justalk/anime-api.svg?style=flat-square)
+![Last version](https://img.shields.io/github/v/tag/justalk/anime-api.svg?style=flat-square)
+[![Node version](https://img.shields.io/node/v/@justalk/anime-api.svg?style=flat-square)](https://www.npmjs.com/package/@justalk/anime-api)
+[![Travis](https://img.shields.io/travis/com/justalk/anime-api.svg?style=flat-square)](https://travis-ci.com/github/JustalK/anime-api)
+[![Coverage Status](https://coveralls.io/repos/github/JustalK/ANIME-API/badge.svg?branch=master&style=flat-square)](https://coveralls.io/github/JustalK/anime-api?branch=master)
+[![Dependency status](http://img.shields.io/david/justalk/anime-api.svg?style=flat-square)](https://david-dm.org/justalk/anime-api.svg)
+![Last version](https://img.shields.io/github/license/justalk/anime-api.svg?style=flat-square)
 [![XO code style](https://img.shields.io/badge/code_style-XO-5ed9c7.svg?style=flat-square)](https://github.com/xojs/xo)
 
-![Star the project](https://img.shields.io/github/stars/ehAsuna/anime-api?style=social)
+![Star the project](https://img.shields.io/github/stars/justalk/anime-api?style=social)
 
 Are you not tired of searching where you can watch or download your favorite animes ? To search on hundred of website until you find what you are looking for ? If yes, this API is for you. This API is a powerful scraper of many streaming and downloading website. With this API, you can search a page about your favorite anime or search for a download link or streaming link for enjoying your favorite animes.
 
