@@ -7,9 +7,9 @@
     "node": ">=12.0.0"
   },
   "scripts": {
-    "test": "xo && nyc --reporter=html --reporter=text ava --verbose --timeout=1m",
-    "test-no": "ava tests/*/*.js --verbose --timeout=1m",
-    "test-p": "ava tests/dynamic/tests_animedaisuki.js --verbose --timeout=1m",
+    "test": "xo && nyc --reporter=html --reporter=text ava --verbose --timeout=2m",
+    "test-no": "ava tests/*/*.js --verbose --timeout=2m",
+    "test-p": "ava tests/dynamic/tests_search.js --verbose --timeout=2m",
     "coverage": "nyc report --reporter=text-lcov | coveralls"
   },
   "repository": {

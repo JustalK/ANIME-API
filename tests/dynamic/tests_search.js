@@ -26,7 +26,7 @@ test('[DYNAMIC] Testing the search of a streaming links on many websites', async
 
 	const stream_gogoanime = stream.find(element => element.source === 'GOGOANIME');
 	t.is(stream_gogoanime.source, 'GOGOANIME');
-	t.is(stream_gogoanime.link, 'https://www3.gogoanime.pro/anime/naruto-shippuden-qv3/ep-500');
+	t.is(stream_gogoanime.link, 'https://www.gogoanime.pro/anime/naruto-shippuden-qv3/ep-500');
 });
 
 test('[DYNAMIC] Testing the search of a download links on many websites', async t => {
